@@ -1,33 +1,20 @@
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatefulWidget {
-  @override
-  _MyAppBar createState() => _MyAppBar();
+class MyDrawer extends StatefulWidget {
+  /*
+  String userId;
+  bool isLogin;
+
+  _Drawer({required this.userId, required this.isLogin});
+  */
+  _MyDrawer createState() => _MyDrawer();
 }
 
-class _MyAppBar extends State<MyAppBar> {
+class _MyDrawer extends State<MyDrawer> {
 
-  @override
+  // 사용자 로그인 정보 받아와서 drawer 수정 필요
+
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('SiteName'),
-            centerTitle: true,
-            elevation: 0.0, //앱바 하단 그림자 지우기
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Color(0xffACB6E5), Color(0xff86FDE8)])
-              ),
-            ),
-          ),
-          drawer: _buildDrawer(),
-      )
-    );
-  }
-
-  Widget _buildDrawer() { // drawer 만들기
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,

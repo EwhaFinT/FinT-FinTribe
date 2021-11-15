@@ -3,7 +3,11 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import './component/appbar.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+import './page/login.dart';
+import './page/signup.dart';
+import './page/create_vote.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: MyAppBar()
+      home: CreateVotePage(),//SignupPage(),//LoginPage()
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('ko', 'KO'),
+      ],
     );
   }
 }
