@@ -8,6 +8,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import './page/login.dart';
 import './page/signup.dart';
 import './page/create_vote.dart';
+import './page/vote.dart';
+import './page/auction.dart';
+import './page/join_auction.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: CreateVotePage(),//SignupPage(),//LoginPage()
+      home: JoinAuctionPage(),//VotePage(),//CreateVotePage(),//SignupPage(),//LoginPage()
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
