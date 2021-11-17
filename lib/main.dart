@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -10,7 +12,14 @@ import './page/signup.dart';
 import './page/create_vote.dart';
 import './page/vote.dart';
 import './page/auction.dart';
+import './page/wallet.dart';
 import './page/join_auction.dart';
+import './page/mypage.dart';
+import './page/success.dart';
+import './page/artwork.dart';
+import './page/community.dart';
+import './page/community_write.dart';
+import 'package:fint/page/mainpage.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +27,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: JoinAuctionPage(),//VotePage(),//CreateVotePage(),//SignupPage(),//LoginPage()
+      home: MainPage(),
+      //VotePage(),//CreateVotePage(),//SignupPage(),//LoginPage(),//JoinAuctionPage(),//WalletPage
+      //MyPage(), //SuccessPage(), //ArtworkPage(), //CommunityPage(), //CommunityWritePage(), //MainPage()
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

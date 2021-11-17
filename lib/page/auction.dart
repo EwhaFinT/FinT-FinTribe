@@ -8,7 +8,6 @@ class AuctionPage extends StatefulWidget {
   // 경매 정보 받아와야 함
   _AuctionPage createState() => _AuctionPage();
 }
-
 class _AuctionPage extends State<AuctionPage> {
 
   Widget build(BuildContext context) {
@@ -81,7 +80,7 @@ class _AuctionPage extends State<AuctionPage> {
       padding: EdgeInsets.all(width * 0.04),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: const Color(0xffededed),
+        color: Color(0xffededed),
       ),
       child: Column(
         children: [
