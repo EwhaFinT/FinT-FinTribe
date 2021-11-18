@@ -223,50 +223,50 @@ class _VotePage extends State<VotePage> {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                  width * 0.01,
-                  width * 0.0005,
-                  width * 0.01,
-                  width * 0.0005,
+                width * 0.01,
+                width * 0.0005,
+                width * 0.01,
+                width * 0.0005,
               ),
             ),
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget> [
-                Column(
-                  children: <Widget> [
-                    Text('YES'),
-                    Padding(
-                      padding: EdgeInsets.all(width * 0.01),
-                    ),
-                    Text(
-                      '60%',
-                      style: TextStyle(
-                          fontSize: height * 0.024,
-                          fontWeight: FontWeight.bold
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget> [
+                  Column(
+                    children: <Widget> [
+                      Text('YES'),
+                      Padding(
+                        padding: EdgeInsets.all(width * 0.01),
                       ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.all(width * 0.1),
-                ),
-                Column(
-                  children: <Widget> [
-                    Text('NO'),
-                    Padding(
-                      padding: EdgeInsets.all(width * 0.01),
-                    ),
-                    Text(
-                      '20%',
-                      style: TextStyle(
-                          fontSize: height * 0.024,
-                          fontWeight: FontWeight.bold
+                      Text(
+                        '60%',
+                        style: TextStyle(
+                            fontSize: height * 0.024,
+                            fontWeight: FontWeight.bold
+                        ),
                       ),
-                    ),
-                  ],
-                )
-              ]
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(width * 0.1),
+                  ),
+                  Column(
+                    children: <Widget> [
+                      Text('NO'),
+                      Padding(
+                        padding: EdgeInsets.all(width * 0.01),
+                      ),
+                      Text(
+                        '20%',
+                        style: TextStyle(
+                            fontSize: height * 0.024,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
+                  )
+                ]
             ),
           ],
         ),
@@ -277,70 +277,70 @@ class _VotePage extends State<VotePage> {
   Widget _buildVote(double width, double height) {
     return Expanded(
         child: Column(
-        children: <Widget> [
-          Text(
-            '현재 나의 지분 ',
-            style: TextStyle(
-              fontSize: height * 0.024,
-            ),
-          ),
-          Text(
-            '105 / 200 KLAY',
-            style: TextStyle(
-              fontSize: height * 0.02,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.all(width * 0.02),
-          ),
-          Container(
-            padding: EdgeInsets.fromLTRB(width * 0.05, width * 0.01, width * 0.05, width * 0.01 ),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              color: const Color(0xffd6d6d6),
-            ),
-            child: Expanded(
-              child: Row(
-                children: <Widget> [
-                  Expanded(
-                    child: Column(
-                      children: <Widget> [
-                        ListTile(
-                          title: const Text('YES'),
-                          leading: Radio<SelectVote>(
-                            value: SelectVote.YES,
-                            groupValue: _vote,
-                            onChanged: (SelectVote? value) {
-                              setState(() {
-                                _vote = value;
-                              });
-                            },
-                            activeColor: Colors.black,
-                          ),
-                        ),
-                        ListTile(
-                          title: const Text('NO'),
-                          leading: Radio<SelectVote>(
-                            value: SelectVote.NO,
-                            groupValue: _vote,
-                            onChanged: (SelectVote? value) {
-                              setState(() {
-                                _vote = value;
-                              });
-                            },
-                            activeColor: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  _buildVoteButton(width, height),
-                ],
+          children: <Widget> [
+            Text(
+              '현재 나의 지분 ',
+              style: TextStyle(
+                fontSize: height * 0.024,
               ),
             ),
-          ),
-        ],
-      )
+            Text(
+              '105 / 200 KLAY',
+              style: TextStyle(
+                fontSize: height * 0.02,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(width * 0.02),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(width * 0.05, width * 0.01, width * 0.05, width * 0.01 ),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                color: const Color(0xffd6d6d6),
+              ),
+              child: Expanded(
+                child: Row(
+                  children: <Widget> [
+                    Expanded(
+                      child: Column(
+                        children: <Widget> [
+                          ListTile(
+                            title: const Text('YES'),
+                            leading: Radio<SelectVote>(
+                              value: SelectVote.YES,
+                              groupValue: _vote,
+                              onChanged: (SelectVote? value) {
+                                setState(() {
+                                  _vote = value;
+                                });
+                              },
+                              activeColor: Colors.black,
+                            ),
+                          ),
+                          ListTile(
+                            title: const Text('NO'),
+                            leading: Radio<SelectVote>(
+                              value: SelectVote.NO,
+                              groupValue: _vote,
+                              onChanged: (SelectVote? value) {
+                                setState(() {
+                                  _vote = value;
+                                });
+                              },
+                              activeColor: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    _buildVoteButton(width, height),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )
     );
   }
 
@@ -354,7 +354,7 @@ class _VotePage extends State<VotePage> {
       ),
       child: Ink(
         decoration: BoxDecoration(
-            color: const Color(0xffc4c4c4),
+          color: const Color(0xffc4c4c4),
         ),
         child: Container(
           width: width * 0.25,
