@@ -135,12 +135,9 @@ class _VotePage extends State<VotePage> {
         Padding(
           padding: EdgeInsets.all(width * 0.015),
         ),
-        Container(
-          width: width * 0.3,
-          height: width * 0.3,
-          decoration: const BoxDecoration(
-            color: Colors.blueAccent,
-          ),
+        Image.network(
+          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+          width: width * 0.35,
         ),
       ],
     );
@@ -220,14 +217,57 @@ class _VotePage extends State<VotePage> {
             Text(
               'Voting Result',
               style: TextStyle(
-                  fontSize: height * 0.02,
+                  fontSize: height * 0.024,
                   fontWeight: FontWeight.bold
               ),
             ),
             Padding(
-              padding: EdgeInsets.all(width * 0.01),
+              padding: EdgeInsets.fromLTRB(
+                  width * 0.01,
+                  width * 0.0005,
+                  width * 0.01,
+                  width * 0.0005,
+              ),
             ),
-            // 그래프 필요....
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget> [
+                Column(
+                  children: <Widget> [
+                    Text('YES'),
+                    Padding(
+                      padding: EdgeInsets.all(width * 0.01),
+                    ),
+                    Text(
+                      '60%',
+                      style: TextStyle(
+                          fontSize: height * 0.024,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.all(width * 0.1),
+                ),
+                Column(
+                  children: <Widget> [
+                    Text('NO'),
+                    Padding(
+                      padding: EdgeInsets.all(width * 0.01),
+                    ),
+                    Text(
+                      '20%',
+                      style: TextStyle(
+                          fontSize: height * 0.024,
+                          fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                )
+              ]
+            ),
           ],
         ),
       ),

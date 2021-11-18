@@ -120,17 +120,13 @@ class _CreateVotePage extends State<CreateVotePage> {
   Widget _buildArtworkInfo(double width, double height) {
     // 첫번째 컨테이너: 작품(.jpeg / .png )
     // 두번째 컨테이너: 작품 정보
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget> [
-        Container(
-          width: width * 0.3,
-          height: width * 0.3,
-          decoration: const BoxDecoration(
-            color: Colors.blueAccent,
-          ),
+        Image.network(
+          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
+          width: width * 0.35,
         ),
         Padding(
           padding: EdgeInsets.all(width * 0.015),
