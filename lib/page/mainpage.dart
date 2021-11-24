@@ -1,13 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:date_format/date_format.dart';
+import 'package:ntp/ntp.dart';
+import 'package:intl/intl.dart';
+//import 'package:timer_builder/timer_builder.dart';
+import 'package:duration/duration.dart';
 
 import '../widget/appbar.dart';
 import '../widget/drawer.dart';
+import 'dart:async';
 
 class MainPage extends StatefulWidget {
   _MainPage createState() => _MainPage();
 }
 
 class _MainPage extends State<MainPage> {
+  int _counter = 60*180;
+  var _timer;
+
+  void _startTimer() {
+    _counter = 60*180;
+    if (_timer != null) {
+      _timer.cancel();
+    }
+    _timer = Timer.periodic(Duration(hours:3), (timer) {
+      setState(() {
+        if (_counter > 0) {
+          _counter--;
+        } else {
+          _timer.cancel();
+        }
+      });
+    });
+  }
 
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery
@@ -70,6 +94,29 @@ class _MainPage extends State<MainPage> {
                   padding: EdgeInsets.all(width * 0.01),
                 ),
                 _buildTimer(width, height),
+                (_counter > 0)
+                    ? Text("")
+                    : Text(
+                  "DONE!",
+                  style: TextStyle(
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 48,
+                  ),
+                ),
+                Text(
+                  '$_counter',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 48,
+                  ),
+                ),
+
+                // ignore: deprecated_member_use
+                RaisedButton(
+                  onPressed: () => _startTimer(),
+                  child: Text("Start 10 second count down"),
+                ),
               ],
             ),
           ),
@@ -91,4 +138,11 @@ class _MainPage extends State<MainPage> {
       ),
     );
   }
+
+  Future<DateTime> _currentTime() async {
+    DateTime currentTime = await NTP.now();
+    currentTime = currentTime.toUtc().add(const Duration(hours: 9));
+    return currentTime;
+  }
+
 }
