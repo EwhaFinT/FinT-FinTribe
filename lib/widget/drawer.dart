@@ -4,7 +4,7 @@ import '../page/login.dart';
 import '../page/auction.dart';
 import '../page/artwork.dart';
 import '../page/community.dart';
-//import '../page/upload.dart';
+import '../page/upload.dart';
 
 void main() => runApp(const MyDrawer());
 
@@ -97,7 +97,7 @@ class _MyDrawer extends StatelessWidget {
                 Navigator.push(
                 context,
                 MaterialPageRoute(
- //               builder: (context) => UploadPage()),
+                builder: (context) => UploadPage()),
                 );
               },
             ),
