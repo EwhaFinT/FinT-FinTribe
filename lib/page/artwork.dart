@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import '../page/auction.dart';
 import '../widget/appbar.dart';
 import '../widget/drawer.dart';
 
@@ -51,7 +51,8 @@ class _ArtworkPage extends State<ArtworkPage> {
                           _Padding(width),
                           TextButton(
                             onPressed: () {
-                              //widget.func;
+                                Navigator.push(
+                                    context, MaterialPageRoute(builder: (_) => AuctionPage()));
                             },
                             style: TextButton.styleFrom( primary: Colors.white),
                             child: Ink(

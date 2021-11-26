@@ -1,3 +1,7 @@
+import 'package:fint/page/community.dart';
+import 'package:fint/page/upload.dart';
+import 'package:fint/page/vote.dart';
+import 'package:fint/page/wallet.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/appbar.dart';
@@ -28,7 +32,7 @@ class _MyPage extends State<MyPage> {
                 children: <Widget>[
                   Container(
                     width: width * 0.15,
-                    child: Image.asset('assets/images/metamask.png', fit:BoxFit.contain),   //이미지 받아오는 기능으로 바꿔야함
+                    child: Image.asset('assets/images/circle.png', fit:BoxFit.contain),   //이미지 받아오는 기능으로 바꿔야함
                   ),
                   Padding(
                     padding: EdgeInsets.all(width * 0.01),
@@ -85,7 +89,10 @@ class _MyPage extends State<MyPage> {
           ),
 
           TextButton(
-            onPressed: () {}, //응답 받아와서 넣기
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => WalletPage()));
+            }, //응답 받아와서 넣기
             child: Text("연동 바로가기"),
           ),
         ],
@@ -96,7 +103,8 @@ class _MyPage extends State<MyPage> {
   Widget _buildCommunityButton(double width, double height) {
     return TextButton(
       onPressed: () { // 커뮤니티 이동
-
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => CommunityPage()));
       },
       style: TextButton.styleFrom(
         primary: Colors.black,
@@ -124,7 +132,8 @@ class _MyPage extends State<MyPage> {
   Widget _buildVotingButton(double width, double height) {
     return TextButton(
       onPressed: () { // 투표 창으로 이동
-
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => VotePage()));
       },
       style: TextButton.styleFrom(
         primary: Colors.black,
@@ -169,7 +178,7 @@ class _MyPage extends State<MyPage> {
           Padding(
             padding: EdgeInsets.all(width * 0.02),
           ),
-          Image.asset('assets/images/metamask.png'),    //작품 받아와서 넣기
+          Image.asset('assets/images/artwork.jpg'),    //작품 받아와서 넣기
           Padding(
             padding: EdgeInsets.all(width * 0.02),
           ),
@@ -196,9 +205,13 @@ class _MyPage extends State<MyPage> {
       child: Column(
         children: <Widget>[
           Container(
+            height: 50,
             width: width * 0.75,
                 child: TextButton(
-                  onPressed: () {}, //업로드 페이지로 이동
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => UploadPage()));
+                  }, //업로드 페이지로 이동
                   child: Text("내 작품 업로드 하기"),
                 ),
           ),
