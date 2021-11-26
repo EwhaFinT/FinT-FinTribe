@@ -17,6 +17,13 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
+#블록체인을 위한 설치
+provider: ^4.3.3
+web3dart: ^1.2.3
+http: ^0.12.2
+web_socket_channel: ^1.2.0
+#요기까지
+
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
@@ -71,7 +78,7 @@ flutter:
     - assets/images/circle.png
     - assets/images/comment.png
     - assets/images/write_icon.png
-  #   - images/a_dot_ham.jpeg
+    - src/artifacts/NFTMarket.json    #블록체인
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
