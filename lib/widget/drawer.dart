@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MyDrawer extends StatefulWidget {
-  /*
-  String userId;
-  bool isLogin;
+import '../page/mypage.dart';
 
-  _Drawer({required this.userId, required this.isLogin});
-  */
+class MyDrawer extends StatefulWidget {
   _MyDrawer createState() => _MyDrawer();
 }
 
 class _MyDrawer extends State<MyDrawer> {
-
-  // 사용자 로그인 정보 받아와서 drawer 수정 필요
 
   Widget build(BuildContext context) {
     return Drawer(
@@ -34,7 +28,8 @@ class _MyDrawer extends State<MyDrawer> {
           ),
           ListTile(
               leading: Icon(Icons.account_circle),
-              title: Text('My Page')
+              title: Text('My Page'),
+
           ),
           ListTile(
               leading: Icon(Icons.login_rounded),

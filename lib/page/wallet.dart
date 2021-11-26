@@ -43,7 +43,7 @@ class _WalletPage extends State<WalletPage> {
                 Padding(
                   padding: EdgeInsets.all(width * 0.03),
                 ),
-                GradientButton(buttonName: 'Sign in', func: (){}),
+                GradientButton(buttonName: 'Sign in'),
               ],
             ),
           ),

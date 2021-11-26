@@ -1,5 +1,6 @@
 class VoteRate {
-  final String label;
-  final double rate;
-  VoteRate({required this.label, required this.rate});
+  final double yes;
+  final double no;
+
+  VoteRate({required this.yes, required this.no});
 }

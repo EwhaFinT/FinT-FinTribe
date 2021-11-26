@@ -1,10 +1,43 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 import '../widget/appbar.dart';
 import '../widget/drawer.dart';
 import '../widget/button.dart';
+import '../model/art.dart';
+
+class SendToServer { // 서버와 통신
+  Future<void> sendToServer(String title, String artist, int price, String detail, DateTime auctionDate) async {
+    Art art = new Art(
+      title: title,
+      artist: artist,
+      price: price,
+      detail: detail,
+      auctionDate: auctionDate
+    );
+
+    String addr = "http://05e4-121-65-255-141.ngrok.io/v1/user"; // 서버 주소
+    final response = await http.post(
+      Uri.parse(addr),
+      headers: <String, String> {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(
+          <String, dynamic> {
+            'title': art.title,
+            'artist': art.artist,
+            'price': art.price,
+            'detail': art.auctionDate,
+          }
+      ),
+    );
+  }
+}
+
 
 class UploadPage extends StatefulWidget {
   // 경매 정보 받아와야 함
@@ -15,6 +48,11 @@ class _UploadPage extends State<UploadPage> {
 
   DateTime today = DateTime.now();
   DateTime auctionDate = DateTime.now();
+
+  final TextEditingController title = TextEditingController();
+  final TextEditingController artist = TextEditingController();
+  final TextEditingController price = TextEditingController();
+  final TextEditingController detail = TextEditingController();
 
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -78,19 +116,19 @@ class _UploadPage extends State<UploadPage> {
           Padding(
             padding: EdgeInsets.all(width * 0.02),
           ),
-          _buildTextField(width, height, '작품명'),
+          _buildTextField(width, height, '작품명', title),
           Padding(
             padding: EdgeInsets.all(width * 0.015),
           ),
-          _buildTextField(width, height, '작가'),
+          _buildTextField(width, height, '작가', artist),
           Padding(
             padding: EdgeInsets.all(width * 0.015),
           ),
-          _buildTextField(width, height, '경매 시작가'),
+          _buildTextField(width, height, '경매 시작가', price),
           Padding(
             padding: EdgeInsets.all(width * 0.015),
           ),
-          _buildTextField(width, height, '작품 설명'),
+          _buildTextField(width, height, '작품 설명', detail),
           Padding(
             padding: EdgeInsets.all(width * 0.015),
           ),
@@ -98,13 +136,16 @@ class _UploadPage extends State<UploadPage> {
           Padding(
             padding: EdgeInsets.all(width * 0.02),
           ),
-          GradientButton(buttonName: 'CREATE', func: (){}),
+          GradientButton(
+              buttonName: 'CREATE',
+              //func: () => SendToServer().sendToServer(title.text, artist.text, int.parse(detail.text), detail.text, auctionDate)
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildTextField(double width, double height, String label) {
+  Widget _buildTextField(double width, double height, String label, TextEditingController _controller) {
     return Row(
       children: <Widget> [
         Container(
@@ -121,7 +162,8 @@ class _UploadPage extends State<UploadPage> {
           padding: EdgeInsets.all(width * 0.04),
         ),
         Expanded(
-          child: TextField(
+          child: TextFormField(
+            controller: _controller,
             style: TextStyle(height: 0.8),
             decoration: InputDecoration(
               filled: true,

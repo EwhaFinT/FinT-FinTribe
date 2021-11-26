@@ -64,7 +64,7 @@ class _CommunityWritePage extends State<CommunityWritePage> {
                   Padding(
                     padding: EdgeInsets.all(width * 0.02),
                   ),
-                  GradientButton(buttonName: 'SUGGEST', func: (){}),
+                  GradientButton(buttonName: 'SUGGEST'),
                 ]
             ),
           ],
