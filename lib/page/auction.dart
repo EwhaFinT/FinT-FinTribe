@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import '../page/join_auction.dart';
 import '../widget/appbar.dart';
 import '../widget/drawer.dart';
 
@@ -11,7 +11,9 @@ class AuctionPage extends StatefulWidget {
 class _AuctionPage extends State<AuctionPage> {
 
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
+    Size screenSize = MediaQuery
+        .of(context)
+        .size;
     double width = screenSize.width;
     double height = screenSize.height;
 
@@ -22,9 +24,9 @@ class _AuctionPage extends State<AuctionPage> {
         body: Center(
           child: ListView(
               padding: EdgeInsets.all(width * 0.05),
-              children: <Widget> [
+              children: <Widget>[
                 Column(
-                    children: <Widget> [
+                    children: <Widget>[
                       Container(
                         padding: EdgeInsets.all(width * 0.04),
                         decoration: const BoxDecoration(
@@ -124,7 +126,7 @@ class _AuctionPage extends State<AuctionPage> {
 
   Widget _buildTextField(double width, double height, String label) {
     return Row(
-      children: <Widget> [
+      children: <Widget>[
         Container(
           width: width * 0.2,
           child: Text(
@@ -200,32 +202,42 @@ class _AuctionPage extends State<AuctionPage> {
           Padding(
             padding: EdgeInsets.all(width * 0.02),
           ),
-          _buildJoinSuggestion(width, height),
+          _buildJoinSuggestion(width, height, '200 KLAY / 240 KLAY'),
           Padding(
             padding: EdgeInsets.all(width * 0.015),
           ),
-          _buildJoinSuggestion(width, height),
+          _buildJoinSuggestion(width, height, '180 KLAY / 200 KLAY'),
         ],
       ),
     );
   }
 
-  Widget _buildJoinSuggestion(double width, double height) {
-    return Container(
-      width: width * 0.8,
-      padding: EdgeInsets.all(width * 0.03),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
-        color: const Color(0xffc4c4c4),
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        '200 KLAY / 240 KLAY',
-        style: TextStyle(
-          fontSize: height * 0.02,
-          fontWeight: FontWeight.bold,
+
+  Widget _buildJoinSuggestion(double width, double height, String label) {
+    return TextButton(
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => JoinAuctionPage()));
+      },
+      style: TextButton.styleFrom(primary: Colors.black),
+      child: Ink(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          color: const Color(0xffc4c4c4),
         ),
-      )
+        child: Container(
+          width: width * 0.8,
+          height: 50,
+          alignment: Alignment.center,
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: height * 0.02,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

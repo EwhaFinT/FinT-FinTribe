@@ -126,6 +126,8 @@ class _CommunityWritePage extends State<CommunityWritePage> {
         color: Colors.white
       ),
       child: TextField(
+        
+
         style: TextStyle(color: Colors.black),
         decoration: InputDecoration(
             border: InputBorder.none,

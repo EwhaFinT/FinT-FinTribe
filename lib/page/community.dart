@@ -1,3 +1,4 @@
+import 'package:fint/page/community_write.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/appbar.dart';
@@ -113,9 +114,17 @@ class _CommunityPage extends State<CommunityPage> {
         ),
         Expanded(
           flex: 1,
-          child: Container(
-            child: Image.asset('assets/images/write_icon.png'),
-
+          child:
+          Container(
+            child: IconButton(
+              icon: Image.asset('assets/images/write_icon.png',
+                  fit: BoxFit.contain),
+              // iconSize: width * 0.1,
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => CommunityWritePage()));
+              },
+            ),
           ),
         ),
       ],
@@ -124,6 +133,7 @@ class _CommunityPage extends State<CommunityPage> {
   Widget _buildMyinfo(double width, double height){
     return Row(
         children: <Widget>[
+
           Container(
             width: width * 0.1,
             child: Image.asset('assets/images/circle.png', fit:BoxFit.contain),   //이미지 받아오는 기능으로 바꿔야함
@@ -288,6 +298,10 @@ class _CommunityPage extends State<CommunityPage> {
                 hintText: '댓글 쓰기',
                 hintStyle: TextStyle(color: Colors.grey[300])),
             cursorColor: Colors.blue,
+
+              onChanged: (text){
+                print("성공: $text");
+              },
                 ),
           ),
           TextButton(
