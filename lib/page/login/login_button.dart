@@ -1,6 +1,9 @@
 import 'package:fint/page/login/login_event.dart';
+import 'package:fint/page/login/login_page.dart';
+import 'package:fint/page/main/main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginButton extends StatefulWidget {
   GlobalKey<FormState> formKey;
@@ -16,9 +19,33 @@ class LoginButton extends StatefulWidget {
 class _LoginButton extends State<LoginButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
+      onPressed: () async {
+        int result = 0;
         if(widget.formKey.currentState!.validate()) {
-          SendToServer().login(widget.id.text, widget.pw.text);
+          result = await SendToServer().login(widget.id.text, widget.pw.text);
+
+          if(result >= 1) {
+            // 아이디 저장
+            final prefs = await SharedPreferences.getInstance();
+            prefs.setString('identity', widget.id.text);
+            prefs.setInt('userId', result);
+
+            // 로그인 성공 후 메인 페이지로
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => MainPage()
+                )
+            );
+          }
+          else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LoginPage()
+                )
+            );
+          }
         }
       },
       child: Text(

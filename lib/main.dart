@@ -11,20 +11,13 @@ import 'page/create_vote/create_vote_page.dart';
 import 'page/vote/vote_page.dart';
 import 'page/auction/auction_page.dart';
 import './page/wallet.dart';
-<<<<<<< HEAD
-import 'page/join_auction/join_auction_page.dart';
-
-import './page/upload.dart';
-=======
-import './page/join_auction.dart';
->>>>>>> ae6ba4b3b805eed0d642d829104570e93a474075
-import './page/mypage.dart';
+import 'page/mypage.dart';
 import './page/success.dart';
 import './page/artwork.dart';
 import './page/community.dart';
 import './page/community_write.dart';
 import './page/upload.dart';
-import 'package:fint/page/mainpage.dart';
+import 'package:fint/page/main/main_page.dart';
 
 import './model/auction_price.dart';
 
@@ -34,14 +27,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-<<<<<<< HEAD
-      home: AuctionPage(), //UploadPage(),//JoinAuctionPage(),//VotePage(),//CreateVotePage(),//SignupPage(),//LoginPage()
-
-=======
       home: MainPage(),
       //VotePage(),//CreateVotePage(),//UploadPage(), //SignupPage(),//LoginPage(),//JoinAuctionPage(),//WalletPage
       //MyPage(), //SuccessPage(), //ArtworkPage(), //CommunityPage(), //CommunityWritePage(), //MainPage(), //UploadPage()
->>>>>>> ae6ba4b3b805eed0d642d829104570e93a474075
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

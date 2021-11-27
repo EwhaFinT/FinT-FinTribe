@@ -2,23 +2,22 @@ import 'dart:convert';
 
 import 'package:fint/model/auction_initialize.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../model/auction.dart';
 import '../../model/auction_price.dart';
+import 'package:fint/domain.dart';
 
 class SendToServer {
-  Future<void> suggestNewAuction(int totalPrice, double ratio) async {
+  Future<void> suggestNewAuction(int suggester, int totalPrice, double ratio) async {
     Auction auction = new Auction(
       auctionId: 1,
-      suggester: '사용자 아이디',
+      suggester: suggester,
       totalPrice: totalPrice,
       ratio: ratio,
     );
 
-    print(auction.totalPrice.toString() + ' ' + auction.ratio.toString());
-
-    /*
-    String addr = "http://05e4-121-65-255-141.ngrok.io/v1/user"; // 서버 주소
+    String addr = domain + "/v1/price"; // 서버 주소
 
     // 경매 가격 제안 보내기
     final response = await http.post(
@@ -35,6 +34,7 @@ class SendToServer {
           }
       ),
     );
+    /*
     // httpOk
     if(response.statusCode == 200) return json.decode(response.body);
     throw Exception();
@@ -45,6 +45,7 @@ class SendToServer {
 class ReceiveFromServer {
   Future<AuctionInitialize> loadSuggestions() async {
     // 임의의 데이터
+    /*
     return AuctionInitialize(
         upperLimit: 200,
         priceList: [
@@ -60,14 +61,19 @@ class ReceiveFromServer {
           ),
         ]
     );
-    /*
-    String addr = "http://05e4-121-65-255-141.ngrok.io/v1/user"; // 서버 주소
+    */
+    String addr = domain + "/v1/pricelist"; // 서버 주소
+
+    Map<String, int> queryParams = {
+      'auctionId': 1,
+    };
 
     // 기존에 존재하는 제안서 받아오기
-    final response = await http.get(Uri.parse(addr));
+    final response = await http.get(
+        Uri.parse(addr).replace(queryParameters: queryParams)
+    );
     if(response.statusCode == 200)
-      return //Art.fromJson(json.decode(response.body));
+      return AuctionInitialize.fromJson(json.decode(response.body));
     throw Exception();
-    */
   }
 }

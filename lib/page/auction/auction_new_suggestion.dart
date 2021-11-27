@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../page/auction/auction_form_input.dart';
 import '../../page/auction/auction_event.dart';
@@ -17,6 +18,21 @@ class _NewSuggestion extends State<NewSuggestion> {
 
   TextEditingController _total = TextEditingController();
   TextEditingController _ratio = TextEditingController();
+
+  int userId = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserId();
+  }
+
+  _loadUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userId = prefs.getInt('userId') as int;
+    });
+  }
 
   String _price = '0';
   setPrice(String total, String ratio) => setState(() {
@@ -73,7 +89,7 @@ class _NewSuggestion extends State<NewSuggestion> {
             TextButton(
               onPressed: () { // 제안 기능 구현 필요
                 if(formKey.currentState!.validate())
-                  SendToServer().suggestNewAuction(int.parse(_total.text.toString()), double.parse(_ratio.text.toString()));
+                  SendToServer().suggestNewAuction(userId, int.parse(_total.text.toString()), double.parse(_ratio.text.toString()));
               },
               style: TextButton.styleFrom(
                 primary: Colors.black,

@@ -2,6 +2,7 @@ import 'package:fint/page/create_vote/create_vote_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../widget/appbar.dart';
 import '../../widget/drawer.dart';
@@ -21,13 +22,14 @@ class CreateVotePage extends StatefulWidget {
 class _CreateVotePage extends State<CreateVotePage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-
   DateTime today = DateTime.now();
   DateTime temp = DateTime.now();
 
   Future<Art>? artwork;
+
   String _voteDate = formatter.format(DateTime.now()).toString();
   String _auctionDate = formatter.format(DateTime.now()).toString();
+  String userId = "";
 
   setVoteDate(String value) => setState(() {
     _voteDate = value;
@@ -39,10 +41,19 @@ class _CreateVotePage extends State<CreateVotePage> {
   TextEditingController _content = TextEditingController();
   TextEditingController _price = TextEditingController();
 
+
   @override
   void initState() {
     super.initState();
     artwork = ReceiveFromServer().loadArtInfo();
+    _loadUserId();
+  }
+
+  _loadUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userId = prefs.getString('userId').toString();
+    });
   }
 
   Widget build(BuildContext context) {
@@ -110,7 +121,7 @@ class _CreateVotePage extends State<CreateVotePage> {
                               padding: EdgeInsets.all(width * 0.02),
                             ),
                             // ==================== 사용자 아이디 받아오는 부분 작성 필요 ====================
-                            CreateVoteExistedInfo(width: width, height: height, label: '제안자', content: '사용자 ID 불러오기 필요..'), // 2. 제안자
+                            CreateVoteExistedInfo(width: width, height: height, label: '제안자', content: userId), // 2. 제안자
                             Padding(
                               padding: EdgeInsets.all(width * 0.02),
                             ),
@@ -138,7 +149,7 @@ class _CreateVotePage extends State<CreateVotePage> {
                       onPressed: () => {
                         // 낙찰 기한은 투표 기한보다 길어야 함 & 텍스트 필드는 유효성을 만족해야 함
                         if(_voteDate.compareTo(_auctionDate) < 0 && formKey.currentState!.validate())
-                          SendToServer().propose('사용자 ID', _content.text, formatter.format(today).toString(), _voteDate, _auctionDate, int.parse(_price.text))
+                          SendToServer().propose(userId, _content.text, formatter.format(today).toString(), _voteDate, _auctionDate, int.parse(_price.text))
                       },
                       style: TextButton.styleFrom( primary: Colors.white),
                       child: Ink(

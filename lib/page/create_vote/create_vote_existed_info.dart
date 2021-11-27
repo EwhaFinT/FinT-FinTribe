@@ -12,6 +12,7 @@ class CreateVoteExistedInfo extends StatefulWidget {
 }
 
 class _CreateVoteExistedInfo extends State<CreateVoteExistedInfo> {
+
   Widget build(BuildContext context) {
     return Row(
       children: <Widget> [

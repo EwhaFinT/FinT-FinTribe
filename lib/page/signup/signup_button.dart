@@ -1,6 +1,9 @@
 import 'package:fint/page/signup/signup_event.dart';
+import 'package:fint/page/signup/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fint/page/login/login_page.dart';
 
 class SignupButton extends StatefulWidget {
   GlobalKey<FormState> formKey;
@@ -18,9 +21,32 @@ class SignupButton extends StatefulWidget {
 class _SignupButton extends State<SignupButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {
-        if(widget.formKey.currentState!.validate())
-          SendToServer().signup(widget.id.text, widget.pw.text, widget.name.text, widget.phoneNumber.text);
+      onPressed: () async {
+        int result = 0;
+        if(widget.formKey.currentState!.validate()) {
+          result = await SendToServer().signup(widget.id.text, widget.pw.text, widget.name.text, widget.phoneNumber.text);
+
+          // 중복 아이디 검사
+          String isDuplicated = (result == 0) ? "dup" : "ok";
+          print(isDuplicated);
+          if(result == 1) {
+            // 회원가입 성공 후 로그인 페이지로
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => LoginPage()
+                )
+            );
+          }
+          else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SignupPage()
+                )
+            );
+          }
+        }
       },
       child: Text(
         'Create Account',

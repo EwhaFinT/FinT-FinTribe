@@ -1,6 +1,6 @@
 class AuctionJoin {
   int priceId;
-  String participant;
+  int participant;
   int auctionId;
   double ratio;
 
@@ -13,7 +13,7 @@ class AuctionJoin {
   factory AuctionJoin.fromJson(Map<String, dynamic> json) {
     return AuctionJoin(
       priceId: json['priceId'],
-      participant: json['participant'],
+      participant: json['userId'],
       auctionId: json['auctionId'],
       ratio: json['ratio'],
     );

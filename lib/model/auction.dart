@@ -1,6 +1,6 @@
 class Auction {
   int auctionId;
-  String suggester;
+  int suggester;
   int totalPrice;
   double ratio;
 

@@ -1,3 +1,4 @@
+import 'package:fint/page/signup/signup_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/appbar.dart';
@@ -60,12 +61,22 @@ class _LoginPage extends State<LoginPage> {
                 Padding(
                   padding: EdgeInsets.all(width * 0.015),
                 ),
-                Container(
-                  width: width * 0.75,
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(fontSize: height * 0.018),
-                    textAlign: TextAlign.right,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder:(context) => SignupPage(),
+                      )
+                    );
+                  },
+                  child: Container(
+                    width: width * 0.75,
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(fontSize: height * 0.018),
+                      textAlign: TextAlign.right,
+                    ),
                   ),
                 ),
               ],

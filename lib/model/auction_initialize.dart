@@ -9,7 +9,7 @@ class AuctionInitialize {
   factory AuctionInitialize.fromJson(Map<String, dynamic> json) {
     return AuctionInitialize(
       upperLimit: json['upperLimit'],
-      priceList: json['priceList'],
+      priceList: json['price'],
     );
   }
 }

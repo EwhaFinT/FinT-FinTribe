@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../page/join_auction/join_auction_input.dart';
 import '../../page/join_auction/join_auction_unabled_input.dart';
@@ -19,6 +20,22 @@ class _AuctionForm extends State<AuctionForm> {
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController _ratio = new TextEditingController();
+
+  int userId = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserId();
+  }
+
+  _loadUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userId = prefs.getInt('userId') as int;
+    });
+  }
+
 
   String _price = '0';
   setPrice(int total, String ratio) => setState(() {
@@ -79,7 +96,7 @@ class _AuctionForm extends State<AuctionForm> {
             TextButton(
               onPressed: () {
                 if(formKey.currentState!.validate())
-                  SendToServer().joinAuction(1, '사용자 ID', 1, double.parse(_ratio.text)/100);
+                  SendToServer().joinAuction(1, userId, 1, double.parse(_ratio.text)/100);
               },
               style: TextButton.styleFrom(
                 primary: Colors.black,

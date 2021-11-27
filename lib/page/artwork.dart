@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../page/auction.dart';
+
+import '../page/auction/auction_page.dart';
+import '../model/artwork.dart';
 import '../widget/appbar.dart';
 import '../widget/drawer.dart';
 
 class ArtworkPage extends StatefulWidget {
-  // 작품 정보 받아오기
+  Artwork artworkInfo;
+  ArtworkPage({required this.artworkInfo});
   _ArtworkPage createState() => _ArtworkPage();
 }
 
@@ -35,7 +38,7 @@ class _ArtworkPage extends State<ArtworkPage> {
                             child: Image.asset('assets/images/artwork.jpg', fit:BoxFit.contain),   //이미지 받아오는 기능으로 바꿔야함
                           ),
                           _Padding(width),
-                          _buildAuthorName(width, height, '작가', '작품명'),
+                          _buildAuthorName(width, height, widget.artworkInfo.artist, widget.artworkInfo.title),
                           Padding(
                             padding: EdgeInsets.all(width * 0.03),
                           ),
@@ -43,9 +46,9 @@ class _ArtworkPage extends State<ArtworkPage> {
                           Padding(
                             padding: EdgeInsets.all(width * 0.03),
                           ),
-                          _buildInfoField1(width, height, '작품설명에 대한 내용'),
+                          _buildInfoField1(width, height, widget.artworkInfo.detail),
                           _Padding(width),
-                          _buildInfoField2(width, height, '작품설명에 대한 내용'),
+                          _buildInfoField2(width, height, widget.artworkInfo.nftAddress),
                           _Padding(width),
                           _buildInfoField3(width, height, '작품설명에 대한 내용'),
                           _Padding(width),
@@ -117,11 +120,11 @@ class _ArtworkPage extends State<ArtworkPage> {
     return Padding(padding: EdgeInsets.all(width * 0.01));
   }
 }
-  Widget _buildAuthorName(double width, double height, String author, String artname) {
+  Widget _buildAuthorName(double width, double height, String author, String title) {
     return Container(
       width: width * 0.75,
       child: Text(
-        'author - artname',   //나중에 받아와야함
+        '${author} - ${title}',   //나중에 받아와야함
         style: TextStyle(
           fontSize: height * 0.018,
         ),

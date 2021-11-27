@@ -16,12 +16,23 @@ class AuctionPage extends StatefulWidget {
 }
 class _AuctionPage extends State<AuctionPage> {
 
-  Future<AuctionInitialize>? intialValue; // price 정보 받아오기
+  AuctionInitialize intialValue = AuctionInitialize(
+      upperLimit: 0,
+      priceList: []
+  );
 
   @override
   void initState() {
     super.initState();
-    intialValue = ReceiveFromServer().loadSuggestions();
+    _loadPriceList();
+  }
+
+  _loadPriceList() async {
+    final _intialValue = await ReceiveFromServer().loadSuggestions();
+    setState(() {
+      intialValue.upperLimit - _intialValue.upperLimit;
+      intialValue.priceList = _intialValue.priceList;
+    });
   }
 
   Widget build(BuildContext context) {
@@ -37,31 +48,16 @@ class _AuctionPage extends State<AuctionPage> {
           child: ListView(
               padding: EdgeInsets.all(width * 0.05),
               children: <Widget> [
-                FutureBuilder<AuctionInitialize>(
-                    future: intialValue,
-                    builder: (context, snapshot) {
-                      if(snapshot.hasData) {
-                        int? upperLimit = snapshot.data?.upperLimit;
-                        List<AuctionPrice>? priceList = snapshot.data?.priceList;
-
-                        return Column(
-                            children: <Widget> [
-                              UpperLimit(width: width, height: height, upperLimit: upperLimit as int),
-                              Padding(
-                                padding: EdgeInsets.all(width * 0.02),
-                              ),
-                              NewSuggestion(width: width, height: height),
-                              Padding(
-                                padding: EdgeInsets.all(width * 0.02),
-                              ),
-                              Suggestions(width: width, height: height, priceList: priceList as List<AuctionPrice>),
-                            ]
-                        );
-                      }
-                      throw Exception();
-                    }
+                UpperLimit(width: width, height: height, upperLimit: intialValue.upperLimit),
+                Padding(
+                  padding: EdgeInsets.all(width * 0.02),
                 ),
-              ]
+                NewSuggestion(width: width, height: height),
+                Padding(
+                  padding: EdgeInsets.all(width * 0.02),
+                ),
+                Suggestions(width: width, height: height, priceList: intialValue.priceList),
+             ],
           ),
         ),
       ),
