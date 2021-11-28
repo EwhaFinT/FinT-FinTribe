@@ -51,6 +51,7 @@ class _Suggestions extends State<Suggestions> {
                             builder: (context) => JoinAuctionPage(
                                 price: new AuctionPrice(
                                   auctionId: 1,
+                                  priceId: auc.priceId,
                                   totalPrice: auc.totalPrice,
                                   remainRatio: auc.remainRatio,
                                 )

@@ -1,5 +1,5 @@
 import 'package:fint/page/community.dart';
-import 'package:fint/page/upload.dart';
+import 'package:fint/page/upload/upload_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'vote/vote_page.dart';

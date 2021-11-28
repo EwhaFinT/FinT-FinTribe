@@ -45,11 +45,11 @@ class _LoginPage extends State<LoginPage> {
                     key: formKey,
                     child: Column(
                       children: <Widget>[
-                        LoginTextField(width: width, height: height, label: 'ID', controller: _id),
+                        LoginTextField(width: width, height: height, label: 'ID', visible: true, controller: _id),
                         Padding(
                           padding: EdgeInsets.all(width * 0.02),
                         ),
-                        LoginTextField(width: width, height: height, label: 'Password', controller: _pw),
+                        LoginTextField(width: width, height: height, label: 'Password', visible: false, controller: _pw),
                         Padding(
                           padding: EdgeInsets.all(width * 0.03),
                         ),

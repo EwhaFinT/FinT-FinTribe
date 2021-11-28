@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../page/auction/auction_page.dart';
+import '../page/login/login_page.dart';
 import '../model/artwork.dart';
 import '../widget/appbar.dart';
 import '../widget/drawer.dart';
@@ -50,12 +52,23 @@ class _ArtworkPage extends State<ArtworkPage> {
                           _Padding(width),
                           _buildInfoField2(width, height, widget.artworkInfo.nftAddress),
                           _Padding(width),
-                          _buildInfoField3(width, height, '작품설명에 대한 내용'),
+                          _buildInfoField3(width, height, '거래내역이 존재하지 않습니다.'),
                           _Padding(width),
                           TextButton(
-                            onPressed: () {
+                            onPressed: () async {
+                              final prefs = await SharedPreferences.getInstance();
+                              final userId = prefs.getInt('userId') ?? 0;
+
+                              if(userId != 0) {
                                 Navigator.push(
-                                    context, MaterialPageRoute(builder: (_) => AuctionPage()));
+                                    context, MaterialPageRoute(builder: (_) => AuctionPage())
+                                );
+                              }
+                              else {
+                                Navigator.push(
+                                    context, MaterialPageRoute(builder: (_) => LoginPage())
+                                );
+                              }
                             },
                             style: TextButton.styleFrom( primary: Colors.white),
                             child: Ink(

@@ -64,14 +64,20 @@ class ReceiveFromServer {
     */
     String addr = domain + "/v1/pricelist"; // 서버 주소
 
+    /*
     Map<String, int> queryParams = {
       'auctionId': 1,
     };
+     */
 
     // 기존에 존재하는 제안서 받아오기
     final response = await http.get(
-        Uri.parse(addr).replace(queryParameters: queryParams)
+      Uri.parse(addr),//.replace(queryParameters: queryParams),
+      headers: <String, String> {
+        'Content-Type': 'application/json',
+      },
     );
+    print(response.body);
     if(response.statusCode == 200)
       return AuctionInitialize.fromJson(json.decode(response.body));
     throw Exception();

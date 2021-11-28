@@ -16,7 +16,7 @@ import './page/success.dart';
 import './page/artwork.dart';
 import './page/community.dart';
 import './page/community_write.dart';
-import './page/upload.dart';
+import 'page/upload/upload_page.dart';
 import 'package:fint/page/main/main_page.dart';
 
 import './model/auction_price.dart';

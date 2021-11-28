@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../page/auction/auction_form_input.dart';
 import '../../page/auction/auction_event.dart';
+import '../../page/auction/auction_page.dart';
 
 class NewSuggestion extends StatefulWidget {
   double width;
@@ -87,9 +88,50 @@ class _NewSuggestion extends State<NewSuggestion> {
               padding: EdgeInsets.all(widget.width * 0.015),
             ),
             TextButton(
-              onPressed: () { // 제안 기능 구현 필요
-                if(formKey.currentState!.validate())
-                  SendToServer().suggestNewAuction(userId, int.parse(_total.text.toString()), double.parse(_ratio.text.toString()));
+              onPressed: () async { // 제안 기능 구현 필요
+                if (formKey.currentState!.validate()) {
+                  SendToServer().suggestNewAuction(
+                      userId, int.parse(_total.text.toString()),
+                      double.parse(_ratio.text.toString()) / 100);
+                  showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          '제안 완료',
+                          style: TextStyle(
+                            fontSize: widget.height * 0.02,
+                          ),
+                        ),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text(
+                                '경매 현황: ${_price} KLAY / ${_total.text} KLAY',
+                                style: TextStyle(
+                                  fontSize: widget.height * 0.018,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AuctionPage()),
+                  );
+                }
               },
               style: TextButton.styleFrom(
                 primary: Colors.black,

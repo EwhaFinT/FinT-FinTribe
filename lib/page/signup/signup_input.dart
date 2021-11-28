@@ -8,10 +8,11 @@ class SignupTextField extends StatefulWidget {
   double height;
   String label;
   TextEditingController pw;
+  bool visible;
   TextEditingController controller;
   int funcNo;
 
-  SignupTextField({required this.width, required this.height, required this.label, required this.pw, required this.controller, required this.funcNo});
+  SignupTextField({required this.width, required this.height, required this.label, required this.pw, required this.visible, required this.controller, required this.funcNo});
   _SignupTextField createState() => _SignupTextField();
 }
 
@@ -34,6 +35,7 @@ class _SignupTextField extends State<SignupTextField> {
         ),
         Expanded( // 텍스트 입력창
           child: TextFormField(
+            obscureText: !widget.visible,
             controller: widget.controller,
             style: TextStyle(height: 1.0),
             decoration: InputDecoration(

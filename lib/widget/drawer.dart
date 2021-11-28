@@ -5,7 +5,7 @@ import '../page/login/login_page.dart';
 import '../page/auction/auction_page.dart';
 import '../page/artwork.dart';
 import '../page/community.dart';
-import '../page/upload.dart';
+import '../page/upload/upload_page.dart';
 
 import '../model/artwork.dart';
 import '../page/main/main_event.dart';
@@ -92,6 +92,7 @@ class _MyDrawer extends StatelessWidget {
 
               if(userId != 0) {
                 prefs.remove('userId');
+                prefs.remove('identity');
                 Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -30,7 +30,7 @@ class _AuctionPage extends State<AuctionPage> {
   _loadPriceList() async {
     final _intialValue = await ReceiveFromServer().loadSuggestions();
     setState(() {
-      intialValue.upperLimit - _intialValue.upperLimit;
+      intialValue.upperLimit = _intialValue.upperLimit;
       intialValue.priceList = _intialValue.priceList;
     });
   }

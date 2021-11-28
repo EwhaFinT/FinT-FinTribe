@@ -48,7 +48,7 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin{
   }
 
   _loadArtworkInfo() async {
-    Artwork artwork = await ReceiveFromServer().loadArtworkInfo();
+    Artwork artwork = await ReceiveFromServer().loadArtworkInfo() as Artwork;
     DateTime now = DateTime.now();
     var formatter = DateFormat('HH-mm-ss');
 
@@ -65,14 +65,24 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin{
       List<String> _now_divide = _now.split('-');
       String endTime = artwork.time.toString();
 
-      hour = int.parse(endTime.substring(0,2)) - int.parse(_now_divide[0]);
-      min = int.parse(endTime.substring(2, 2)) - int.parse(_now_divide[1]);
-      sec = int.parse(endTime.substring(4, 2)) - int.parse(_now_divide[2]);
-      print("${hour}:${min}:${sec}");
+      String end_hour = endTime.substring(0,2); _checkZero(end_hour);
+      String now_hour = _now_divide[0]; _checkZero(now_hour);
+      String end_min = endTime.substring(2,4); _checkZero(end_min);
+      String now_min = _now_divide[1]; _checkZero(now_min);
+      String end_sec = endTime.substring(4,6); _checkZero(end_sec);
+      String now_sec = _now_divide[2]; _checkZero(now_sec);
+
+      hour = int.parse(end_hour) - int.parse(now_hour);
+      min = int.parse(end_min) - int.parse(now_min);
+      sec = int.parse(end_sec) - int.parse(now_sec);
       if (started) {
         start();
       }
     });
+  }
+
+  _checkZero(String value) {
+    if(value[0] == '0') value = value[1];
   }
 
   void start() {

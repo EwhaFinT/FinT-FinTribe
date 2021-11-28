@@ -24,7 +24,6 @@ class ReceiveFromServer {
 
     // 기존에 존재하는 제안서 받아오기
     final response = await http.get(Uri.parse(addr));
-    print(response.body); // 추후에 삭제
 
     if(response.statusCode == 200)
       return Artwork.fromJson(json.decode(response.body));

@@ -4,7 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../page/join_auction/join_auction_input.dart';
 import '../../page/join_auction/join_auction_unabled_input.dart';
-import '../../page/join_auction/Join_auction_event.dart';
+import '../../page/join_auction/join_auction_event.dart';
+import '../../page/auction/auction_page.dart';
 
 class AuctionForm extends StatefulWidget {
   double width;
@@ -94,9 +95,49 @@ class _AuctionForm extends State<AuctionForm> {
               padding: EdgeInsets.all(widget.width * 0.015),
             ),
             TextButton(
-              onPressed: () {
-                if(formKey.currentState!.validate())
-                  SendToServer().joinAuction(1, userId, 1, double.parse(_ratio.text)/100);
+              onPressed: () async {
+                if(formKey.currentState!.validate()) {
+                  SendToServer().joinAuction(
+                      1, userId, 1, double.parse(_ratio.text) / 100);
+                  showDialog<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text(
+                          '경매 완료',
+                          style: TextStyle(
+                            fontSize: widget.height * 0.02,
+                          ),
+                        ),
+                        content: SingleChildScrollView(
+                          child: ListBody(
+                            children: <Widget>[
+                              Text(
+                                '경매 참여 완료! ${double.parse(_ratio.text) / 100 * widget.total} KLAY 인출 되었습니다.\n경매 현황: ${(1-(widget.remainRatio - double.parse(_ratio.text) / 100)) * widget.total} KLAY / ${widget.total} KLAY',
+                                style: TextStyle(
+                                  fontSize: widget.height * 0.018,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: const Text('Ok'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AuctionPage()),
+                );
               },
               style: TextButton.styleFrom(
                 primary: Colors.black,

@@ -1,43 +1,16 @@
-import 'dart:convert';
+import 'dart:io' as io;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:http/http.dart' as http;
 
-import '../widget/appbar.dart';
-import '../widget/drawer.dart';
-import '../widget/button.dart';
-import '../model/art.dart';
+import '../../widget/appbar.dart';
+import '../../widget/drawer.dart';
+import '../../widget/button.dart';
+import '../../page/upload/upload_date_picker.dart';
 
-class SendToServer { // 서버와 통신
-  Future<void> sendToServer(String title, String artist, int price, String detail, DateTime auctionDate) async {
-    Art art = new Art(
-      title: title,
-      artist: artist,
-      price: price,
-      detail: detail,
-      auctionDate: auctionDate
-    );
-
-    String addr = "http://05e4-121-65-255-141.ngrok.io/v1/user"; // 서버 주소
-    final response = await http.post(
-      Uri.parse(addr),
-      headers: <String, String> {
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode(
-          <String, dynamic> {
-            'title': art.title,
-            'artist': art.artist,
-            'price': art.price,
-            'detail': art.auctionDate,
-          }
-      ),
-    );
-  }
-}
-
+var formatter = new DateFormat('yyyy-MM-dd');
 
 class UploadPage extends StatefulWidget {
   // 경매 정보 받아와야 함
@@ -48,11 +21,25 @@ class _UploadPage extends State<UploadPage> {
 
   DateTime today = DateTime.now();
   DateTime auctionDate = DateTime.now();
+  io.File? _image;
+
+
+  String _auctionDate = formatter.format(DateTime.now()).toString();
+  setAuctionDate(String value) => setState(() {
+    _auctionDate = value;
+  });
 
   final TextEditingController title = TextEditingController();
   final TextEditingController artist = TextEditingController();
   final TextEditingController price = TextEditingController();
   final TextEditingController detail = TextEditingController();
+
+  _uploadImage() async {
+    XFile? f = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = f as io.File?;
+    });
+  }
 
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -102,15 +89,20 @@ class _UploadPage extends State<UploadPage> {
       padding: EdgeInsets.all(width * 0.04),
       child: Column(
         children: [
-          Container(
-            padding: EdgeInsets.all(width * 0.04),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              color: const Color(0xffededed),
-            ),
-            child: Image.network(
-              'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-              width: width * 0.4,
+          GestureDetector(
+            onTap: () {
+              _uploadImage();
+            },
+            child: Container(
+              width: width * 0.7,
+              height: width * 0.7,
+              padding: EdgeInsets.all(width * 0.04),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                color: const Color(0xffededed),
+              ),
+              child: _image == null
+                ? Text('No image selected.') : Image.file(_image as io.File, width: 100, height: 100),
             ),
           ),
           Padding(
@@ -132,7 +124,7 @@ class _UploadPage extends State<UploadPage> {
           Padding(
             padding: EdgeInsets.all(width * 0.015),
           ),
-          _buildDatePicker(width, height, '낙찰 기한', auctionDate),
+          UploadDatePicker(width: width, height: height, label: '낙찰 기한', controller: _auctionDate, start: today, date: auctionDate, setter: setAuctionDate),
           Padding(
             padding: EdgeInsets.all(width * 0.02),
           ),
@@ -171,61 +163,6 @@ class _UploadPage extends State<UploadPage> {
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
             ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildDatePicker(double width, double height, String label, DateTime date) {
-    String _date = DateFormat('yyyy-MM-dd').format(date);
-
-    return Row(
-      children: <Widget> [
-        Container(
-          width: width * 0.2,
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: height * 0.018,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(width * 0.04),
-        ),
-        Text(
-          _date,
-        ),
-        Padding(
-          padding: EdgeInsets.all(width * 0.06),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            final DateTime selectedDate = showDatePicker(
-              context: context,
-              initialDate: today, // 초깃값
-              firstDate: today,
-              lastDate: today,
-            ) as DateTime;
-            if (selectedDate != null) {
-              setState(() {
-                date = selectedDate as DateTime;
-              });
-            }
-          },
-          child: Text(
-            'Pick Date',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: height * 0.018,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          style: ElevatedButton.styleFrom(
-              primary: Colors.white.withOpacity(0.9),
-              padding: EdgeInsets.fromLTRB(width * 0.02, width * 0.02, width * 0.02, width * 0.02)
           ),
         ),
       ],

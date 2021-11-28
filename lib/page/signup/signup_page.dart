@@ -68,23 +68,23 @@ class _SignupPage extends State<SignupPage> {
                     key: formKey,
                     child: Column(
                       children: [
-                        SignupTextField(width: width, height: height, label: 'ID', pw: _pw, controller: _id, funcNo: 1),
+                        SignupTextField(width: width, height: height, label: 'ID', pw: _pw, visible: true, controller: _id, funcNo: 1),
                         Padding(
                           padding: EdgeInsets.all(width * 0.02),
                         ),
-                        SignupTextField(width: width, height: height, label: 'Password', pw: _pw, controller: _pw, funcNo: 2),
+                        SignupTextField(width: width, height: height, label: 'Password', pw: _pw, visible: false, controller: _pw, funcNo: 2),
                         Padding(
                           padding: EdgeInsets.all(width * 0.02),
                         ),
-                        SignupTextField(width: width, height: height, label: 'Confirm\nPassword', pw: _pw, controller: _confirmPw, funcNo: 3),
+                        SignupTextField(width: width, height: height, label: 'Confirm\nPassword', pw: _pw, visible: false, controller: _confirmPw, funcNo: 3),
                         Padding(
                           padding: EdgeInsets.all(width * 0.02),
                         ),
-                        SignupTextField(width: width, height: height, label: 'Name', pw: _pw, controller: _name, funcNo: 4),
+                        SignupTextField(width: width, height: height, label: 'Name', pw: _pw, visible: true, controller: _name, funcNo: 4),
                         Padding(
                           padding: EdgeInsets.all(width * 0.02),
                         ),
-                        SignupTextField(width: width, height: height, label: 'Phone\nNumber', pw: _pw, controller: _phoneNumber, funcNo: 5),
+                        SignupTextField(width: width, height: height, label: 'Phone\nNumber', pw: _pw, visible: true, controller: _phoneNumber, funcNo: 5),
                         Padding(
                           padding: EdgeInsets.all(width * 0.04),
                         ),

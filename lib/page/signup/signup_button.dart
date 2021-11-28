@@ -39,11 +39,44 @@ class _SignupButton extends State<SignupButton> {
             );
           }
           else {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => SignupPage()
-                )
+            return showDialog<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text(
+                    '회원가입 실패',
+                    style: TextStyle(
+                      fontSize: widget.height * 0.02,
+                    ),
+                  ),
+                  content: SingleChildScrollView(
+                    child: ListBody(
+                      children: <Widget>[
+                        Text(
+                          '중복된 아이디 입니다.',
+                          style: TextStyle(
+                            fontSize: widget.height * 0.018,
+                          ),
+                        ),
+                        Text(
+                          '다른 아이디를 사용해주세요.',
+                          style: TextStyle(
+                            fontSize: widget.height * 0.018,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('Ok'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
             );
           }
         }

@@ -39,11 +39,38 @@ class _LoginButton extends State<LoginButton> {
             );
           }
           else {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => LoginPage()
-                )
+            return showDialog<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text(
+                    '로그인 실패',
+                    style: TextStyle(
+                      fontSize: widget.height * 0.02,
+                    ),
+                  ),
+                  content: SingleChildScrollView(
+                    child: ListBody(
+                      children: <Widget>[
+                        Text(
+                          '아이디나 비밀번호가 일치하지 않습니다.',
+                          style: TextStyle(
+                            fontSize: widget.height * 0.018,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('Ok'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
             );
           }
         }

@@ -5,9 +5,10 @@ class LoginTextField extends StatefulWidget {
   double width;
   double height;
   String label;
+  bool visible;
   TextEditingController controller;
 
-  LoginTextField({required this.width, required this.height, required this.label, required this.controller});
+  LoginTextField({required this.width, required this.height, required this.label, required this.visible, required this.controller});
   _LoginTextField createState() => _LoginTextField();
 }
 
@@ -31,6 +32,7 @@ class _LoginTextField extends State<LoginTextField> {
           Expanded(
             child: Container(
               child: TextFormField(
+                obscureText: !widget.visible,
                 controller: widget.controller,
                 style: TextStyle(height: 1.0),
                 decoration: InputDecoration(
