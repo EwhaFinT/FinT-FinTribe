@@ -1,6 +1,8 @@
 import 'package:fint/page/community.dart';
-import 'package:fint/page/upload.dart';
-import 'package:fint/page/vote.dart';
+import 'package:fint/page/upload/upload_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'vote/vote_page.dart';
 import 'package:fint/page/wallet.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,23 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPage extends State<MyPage> {
+
+  int userId = 0;
+  String identity = "";
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserId();
+  }
+
+  _loadUserId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userId = prefs.getInt('userId') as int;
+      identity = prefs.getString('identity').toString();
+    });
+  }
 
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -38,7 +57,7 @@ class _MyPage extends State<MyPage> {
                     padding: EdgeInsets.all(width * 0.01),
                   ),
                     Text(
-                      '회원 이름',
+                      identity,
                       style: TextStyle(
                           fontSize: height * 0.025,
                       ),
@@ -71,7 +90,7 @@ class _MyPage extends State<MyPage> {
         padding: EdgeInsets.fromLTRB(width * 0.04, width * 0.04, width * 0.04, 5),
 
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
           color: const Color(0xffededed),
         ),
       child: Column(
@@ -114,11 +133,11 @@ class _MyPage extends State<MyPage> {
           color: const Color(0xffc4c4c4),
         ),
         child: Container(
-          width: width * 0.35,
+          width: width * 0.345,
           height: height * 0.05,
           alignment: Alignment.center,
           child: Text(
-            'community',
+            'Community',
             style: TextStyle(
               fontSize: height * 0.02,
               fontWeight: FontWeight.bold,
@@ -143,7 +162,7 @@ class _MyPage extends State<MyPage> {
           color: const Color(0xffc4c4c4),
         ),
         child: Container(
-          width: width * 0.35,
+          width: width * 0.345,
           height: height * 0.05,
           alignment: Alignment.center,
           child: Text(
@@ -162,7 +181,7 @@ class _MyPage extends State<MyPage> {
     return Container(
       padding: EdgeInsets.all(width * 0.04),
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
         color: const Color(0xffededed),
       ),
       child: Column(
@@ -199,7 +218,7 @@ class _MyPage extends State<MyPage> {
     return Container(
       padding: EdgeInsets.fromLTRB(width * 0.04, 1, width * 0.04, 1),
       decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.all(Radius.circular(10)),
         color: const Color(0xffededed),
       ),
       child: Column(

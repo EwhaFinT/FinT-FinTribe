@@ -5,20 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import './page/login.dart';
-import './page/signup.dart';
-import './page/create_vote.dart';
-import './page/vote.dart';
-import './page/auction.dart';
-import './page/wallet.dart';
-import './page/join_auction.dart';
-import './page/mypage.dart';
-import './page/success.dart';
-import './page/artwork.dart';
-import './page/community.dart';
-import './page/community_write.dart';
-import './page/upload.dart';
-import 'package:fint/page/mainpage.dart';
+import 'package:fint/page/main/main_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,9 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MainPage(),
-      //VotePage(),//CreateVotePage(),//UploadPage(), //SignupPage(),//LoginPage(),//JoinAuctionPage(),//WalletPage
-      //MyPage(), //SuccessPage(), //ArtworkPage(), //CommunityPage(), //CommunityWritePage(), //MainPage(), //UploadPage()
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

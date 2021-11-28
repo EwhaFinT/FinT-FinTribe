@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 
 class GradientButton extends StatefulWidget {
   String buttonName; // 버튼명
-  VoidCallback func; // 버튼 클릭시 작동하는 함수
 
-  GradientButton({required this.buttonName, required this.func});
+  GradientButton({required this.buttonName});
   _GradientButton createState() => _GradientButton();
 }
 
 class _GradientButton extends State<GradientButton> {
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        widget.func;
+      onPressed: () => {
       },
       style: TextButton.styleFrom( primary: Colors.white),
       child: Ink(

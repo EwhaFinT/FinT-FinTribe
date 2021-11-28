@@ -9,7 +9,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('SiteName'),
+      title: const Text('FinTribe'),
       centerTitle: true,
       elevation: 0.0, //앱바 하단 그림자 지우기
       flexibleSpace: Container(

@@ -43,7 +43,12 @@ dependencies:
   date_format: ^2.0.4
   intl: ^0.17.0
   duration: ^3.0.8
+<<<<<<< HEAD
   qr_flutter: ^4.0.0
+=======
+  shared_preferences:
+  image_picker:
+>>>>>>> b9a7f0a17497cc07eccd1427362f5984c9cff72a
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -52,6 +57,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  http:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
