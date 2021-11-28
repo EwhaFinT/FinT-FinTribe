@@ -32,7 +32,7 @@ class _ArtworkInfo extends State<ArtworkInfo> {
                   padding: EdgeInsets.all(widget.width * 0.01),
                 ),
                 Text(
-                  'Artwork Name',
+                  'Blue Lemon',
                   style: TextStyle(
                       fontSize: widget.height * 0.02,
                       fontWeight: FontWeight.bold
@@ -43,12 +43,9 @@ class _ArtworkInfo extends State<ArtworkInfo> {
             )
         ),
         Padding(
-          padding: EdgeInsets.all(widget.width * 0.015),
+          padding: EdgeInsets.all(0),
         ),
-        Image.network(
-          'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl-2.jpg',
-          width: widget.width * 0.35,
-        ),
+        Image.asset('assets/images/artwork.jpg', width: widget.width * 0.4)
       ],
     );
   }

@@ -30,11 +30,5 @@ class SendToServer {
           }
       ),
     );
-
-    /*
-    // httpOk
-    if(response.statusCode == 200) return json.decode(response.body);
-    throw Exception();
-    */
   }
 }

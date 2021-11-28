@@ -78,7 +78,7 @@ class _VotePage extends State<VotePage> {
                                 borderRadius: BorderRadius.all(Radius.circular(5)),
                                 color: const Color(0xffededed),
                               ),
-                              child: VoteForm(width: width, height: height, myPrice: 5, totalPrice: price as int, myRatio: 65),
+                              child: VoteForm(width: width, height: height, myPrice: 68, totalPrice: price, myRatio: 50),
                             ),
                           ]
                       ),

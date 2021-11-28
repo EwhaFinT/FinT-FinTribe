@@ -43,14 +43,14 @@ class ReceiveFromServer { // 서버와 통신
   Future<VoteProposal> loadVoteInfo() async {
     // 임의의 데이터
     VoteProposal proposal = new VoteProposal(
-        suggester: 'example_suggester',
-        content: 'example_content',
+        suggester: 'kimyu',
+        content: '블루레몬 재경매 합시다',
         suggestTime: 'example_suggest_time',
         voteTime: 'example_vote_time',
         auctionDate: 'example_auction_time',
-        price: 10,
-        yes: 0.2,
-        no: 0,
+        price: 135,
+        yes: 0.4,
+        no: 0.1,
     );
 
     return proposal;

@@ -14,22 +14,23 @@ void main() => runApp(const MyDrawer());
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
-
   static const appTitle = 'Drawer Demo';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: appTitle,
-      home: _MyDrawer(title: appTitle),
+      home: _MyDrawer(title: appTitle, context_: context),
     );
   }
 }
 
 class _MyDrawer extends StatelessWidget {
-  const _MyDrawer({Key? key, required this.title}) : super(key: key);
+  _MyDrawer({Key? key, required this.title, required this.context_}) : super(key: key);
 
   final String title;
+  final BuildContext context_;
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +60,11 @@ class _MyDrawer extends StatelessWidget {
               final userId = prefs.getInt('userId') ?? 0;
 
               if(userId != 0) {
-                Navigator.push(
-                  context,
+                Navigator.pushAndRemoveUntil(
+                  context_,
                   MaterialPageRoute(
                       builder: (context) => MyPage()),
+                      (route) => false,
                 );
               }
             },
@@ -76,9 +78,9 @@ class _MyDrawer extends StatelessWidget {
 
               if(userId == 0) {
                 Navigator.push(
-                  context,
+                  context_,
                   MaterialPageRoute(
-                      builder: (context) => LoginPage()),
+                      builder: (context_) => LoginPage()),
                 );
               }
             },
@@ -94,9 +96,9 @@ class _MyDrawer extends StatelessWidget {
                 prefs.remove('userId');
                 prefs.remove('identity');
                 Navigator.push(
-                  context,
+                  context_,
                   MaterialPageRoute(
-                      builder: (context) => LoginPage()),
+                      builder: (context_) => LoginPage()),
                 );
               }
             },
@@ -111,9 +113,9 @@ class _MyDrawer extends StatelessWidget {
               if(userId != 0) {
                 Artwork artwork = await ReceiveFromServer().loadArtworkInfo();
                 Navigator.push(
-                  context,
+                  context_,
                   MaterialPageRoute(
-                      builder: (context) => ArtworkPage(
+                      builder: (context_) => ArtworkPage(
                         artworkInfo: artwork,
                       )),
                 );
@@ -129,9 +131,9 @@ class _MyDrawer extends StatelessWidget {
 
               if(userId != 0) {
                 Navigator.push(
-                  context,
+                  context_,
                   MaterialPageRoute(
-                      builder: (context) => UploadPage()),
+                      builder: (context_) => UploadPage()),
                 );
               }
             },
@@ -145,9 +147,9 @@ class _MyDrawer extends StatelessWidget {
 
               if(userId != 0) {
                 Navigator.push(
-                  context,
+                  context_,
                   MaterialPageRoute(
-                      builder: (context) => CommunityPage()),
+                      builder: (context_) => CommunityPage()),
                 );
               }
             },
@@ -161,9 +163,9 @@ class _MyDrawer extends StatelessWidget {
 
               if(userId != 0) {
                 Navigator.push(
-                  context,
+                  context_,
                   MaterialPageRoute(
-                      builder: (context) => AuctionPage()),
+                      builder: (context_) => AuctionPage()),
                 );
               }
             },

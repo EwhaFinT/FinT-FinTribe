@@ -103,7 +103,7 @@ class _CommunityWritePage extends State<CommunityWritePage> {
                     padding: EdgeInsets.all(width * 0.01),
                   ),
                   Text(
-                    'Artwork Name',
+                    'Blue Lemon',
                     style: TextStyle(
                         fontSize: height * 0.02,
                         fontWeight: FontWeight.bold,
@@ -154,10 +154,10 @@ class _CommunityWritePage extends State<CommunityWritePage> {
               textAlign: TextAlign.left,
             ),
             Text(
-              '작품명: ' '~~~\n'
-                  '작가: ' '~~~\n'
-                  '낙찰 가격: ' '~~~' 'KLAY\n'
-                  '낙찰 일시: ' '2021-11-04 13:01 ' 'KST\n',
+              '작품명: ' 'Blue Lemon\n'
+                  '작가: ' 'kelina\n'
+                  '낙찰 가격: ' '3000' ' KLAY\n'
+                  '낙찰 일시: ' '2021-11-29 13:01 ' 'KST\n',
               style: TextStyle(
                 fontSize: height * 0.018,
               ),

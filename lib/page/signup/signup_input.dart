@@ -51,7 +51,7 @@ class _SignupTextField extends State<SignupTextField> {
                 case 2: return CheckValidate().validatePassword(value.toString());
                 case 3: return CheckValidate().validateConfirmPassword(widget.pw.text, value.toString());
                 case 4: return CheckValidate().validateName(value.toString());
-                case 5: return null;//CheckValidate().validatePhoneNumber(value.toString());
+                case 5: return null;
               }
             },
           ),

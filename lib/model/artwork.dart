@@ -5,7 +5,7 @@ class Artwork {
   String detail;
   String nftAddress;
   int price;
-  int time;
+  String time;
 
   Artwork({required this.artId, required this.artist, required this.title, required this.detail, required this.nftAddress, required this.price, required this.time});
 

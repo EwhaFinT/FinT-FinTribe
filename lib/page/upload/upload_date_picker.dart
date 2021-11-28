@@ -65,7 +65,7 @@ class _UploadDatePicker extends State<UploadDatePicker> {
           ),
           style: ElevatedButton.styleFrom(
               primary: Colors.white.withOpacity(0.9),
-              padding: EdgeInsets.fromLTRB(widget.width * 0.1, widget.width * 0.02, widget.width * 0.1, widget.width * 0.02)
+              padding: EdgeInsets.fromLTRB(widget.width * 0.15, widget.width * 0.02, widget.width * 0.15, widget.width * 0.02)
           ),
         ),
       ],

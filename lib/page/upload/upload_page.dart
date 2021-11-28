@@ -7,7 +7,6 @@ import 'package:intl/intl.dart';
 
 import '../../widget/appbar.dart';
 import '../../widget/drawer.dart';
-import '../../widget/button.dart';
 import '../../page/upload/upload_date_picker.dart';
 
 var formatter = new DateFormat('yyyy-MM-dd');
@@ -21,8 +20,8 @@ class _UploadPage extends State<UploadPage> {
 
   DateTime today = DateTime.now();
   DateTime auctionDate = DateTime.now();
-  io.File? _image;
-
+  //io.File? _image;
+  io.File? selectedImage;
 
   String _auctionDate = formatter.format(DateTime.now()).toString();
   setAuctionDate(String value) => setState(() {
@@ -35,10 +34,18 @@ class _UploadPage extends State<UploadPage> {
   final TextEditingController detail = TextEditingController();
 
   _uploadImage() async {
+    /*
     XFile? f = await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
       _image = f as io.File?;
     });
+
+     */
+    var image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    setState(() {
+      selectedImage = io.File(image!.path);
+    });
+    print("upload...");
   }
 
   Widget build(BuildContext context) {
@@ -101,8 +108,9 @@ class _UploadPage extends State<UploadPage> {
                 borderRadius: BorderRadius.all(Radius.circular(5)),
                 color: const Color(0xffededed),
               ),
-              child: _image == null
-                ? Text('No image selected.') : Image.file(_image as io.File, width: 100, height: 100),
+              child: selectedImage == null
+                ? Text('No image selected.')
+                  : Image.file(io.File((selectedImage as io.File).path), width: 100, height: 100),
             ),
           ),
           Padding(
@@ -128,9 +136,65 @@ class _UploadPage extends State<UploadPage> {
           Padding(
             padding: EdgeInsets.all(width * 0.02),
           ),
-          GradientButton(
-              buttonName: 'CREATE',
-              //func: () => SendToServer().sendToServer(title.text, artist.text, int.parse(detail.text), detail.text, auctionDate)
+          TextButton(
+            onPressed: () => {
+              showDialog<void>(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: Text(
+                      '업로드 성공',
+                      style: TextStyle(
+                        fontSize: height * 0.02,
+                      ),
+                    ),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: <Widget>[
+                          Text(
+                            'NFT address: 0x86b0f3dfddadb2e57b00a6d740f1a461f79179be',
+                            style: TextStyle(
+                              fontSize: height * 0.018,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('Ok'),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => UploadPage()),
+                          );
+                        },
+                      ),
+                    ],
+                  );
+                }
+              )
+            },
+            style: TextButton.styleFrom( primary: Colors.white),
+            child: Ink(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [Color(0xffACB6E5), Color(0xff86FDE8)]),
+                  borderRadius: BorderRadius.circular(10)
+              ),
+              child: Container(
+                width: 200,
+                height: 50,
+                alignment: Alignment.center,
+                child: Text(
+                  'CREATE',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

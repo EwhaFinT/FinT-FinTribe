@@ -133,11 +133,11 @@ class _MyPage extends State<MyPage> {
           color: const Color(0xffc4c4c4),
         ),
         child: Container(
-          width: width * 0.35,
+          width: width * 0.345,
           height: height * 0.05,
           alignment: Alignment.center,
           child: Text(
-            'community',
+            'Community',
             style: TextStyle(
               fontSize: height * 0.02,
               fontWeight: FontWeight.bold,
@@ -162,7 +162,7 @@ class _MyPage extends State<MyPage> {
           color: const Color(0xffc4c4c4),
         ),
         child: Container(
-          width: width * 0.35,
+          width: width * 0.345,
           height: height * 0.05,
           alignment: Alignment.center,
           child: Text(

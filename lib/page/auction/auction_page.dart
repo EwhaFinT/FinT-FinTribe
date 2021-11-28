@@ -5,7 +5,6 @@ import '../../widget/appbar.dart';
 import '../../widget/drawer.dart';
 import '../../page/auction/auction_event.dart';
 import '../../model/auction_initialize.dart';
-import '../../model/auction_price.dart';
 import '../../page/auction/auction_upper_limit.dart';
 import '../../page/auction/auction_new_suggestion.dart';
 import '../../page/auction/auction_suggestions.dart';

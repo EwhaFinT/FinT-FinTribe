@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:fint/model/user_login.dart';
-import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:fint/domain.dart';

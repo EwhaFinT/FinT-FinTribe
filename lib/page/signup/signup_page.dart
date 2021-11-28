@@ -40,16 +40,22 @@ class _SignupPage extends State<SignupPage> {
         appBar: MyAppBar(AppBar()),
         drawer: MyDrawer(),
         body: Center(
-          child: Container(
-            height: height * 0.8,
-            child: Column(
+          child:ListView(
+            // child: Container(
+            //   height: height * 0.8,
+            //   child: Column(
               children: <Widget> [
+                Padding(
+                  padding: EdgeInsets.all(width * 0.07),
+                ),
                 Text(
                   'Sign Up',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: height * 0.028,
+                      fontSize: height * 0.03,
                       fontWeight: FontWeight.bold
                   ),
+
                 ),
                 Padding(
                   padding: EdgeInsets.all(width * 0.04),
@@ -57,6 +63,7 @@ class _SignupPage extends State<SignupPage> {
                 Container(
                   width: width * 0.8,
                   //height: height * 0.58,
+                  margin: EdgeInsets.all(width * 0.07),
                   padding: EdgeInsets.all(width * 0.05),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -89,12 +96,12 @@ class _SignupPage extends State<SignupPage> {
                           padding: EdgeInsets.all(width * 0.04),
                         ),
                         SignupButton(formKey: formKey, width: width, height: height, id: _id, pw: _pw, name: _name, phoneNumber: _phoneNumber),
+
                       ],
                     ),
                   ),
                 ),
               ]
-            ),
           ),
         ),
       ),

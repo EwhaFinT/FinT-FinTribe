@@ -1,4 +1,3 @@
-import 'package:fint/page/vote/vote_artwork_info.dart';
 import 'package:flutter/material.dart';
 import 'package:date_format/date_format.dart';
 import 'package:ntp/ntp.dart';
@@ -63,17 +62,18 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin{
       // 남은 시간 계산
       String _now = formatter.format(now);
       List<String> _now_divide = _now.split('-');
-      String endTime = artwork.time.toString();
+      String endTime = artwork.time;
 
       String end_hour = endTime.substring(0,2); _checkZero(end_hour);
       String now_hour = _now_divide[0]; _checkZero(now_hour);
+      hour = int.parse(end_hour) - int.parse(now_hour);
+
       String end_min = endTime.substring(2,4); _checkZero(end_min);
       String now_min = _now_divide[1]; _checkZero(now_min);
+      min = int.parse(end_min) - int.parse(now_min);
+
       String end_sec = endTime.substring(4,6); _checkZero(end_sec);
       String now_sec = _now_divide[2]; _checkZero(now_sec);
-
-      hour = int.parse(end_hour) - int.parse(now_hour);
-      min = int.parse(end_min) - int.parse(now_min);
       sec = int.parse(end_sec) - int.parse(now_sec);
       if (started) {
         start();
@@ -153,7 +153,7 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin{
                 Container(
                   width: width * 0.5,
                   child: Text(
-                    artist, //작가명 받아와야함
+                    '- ${artist}', //작가명 받아와야함
                     style: TextStyle(
                       fontSize: height * 0.02,
                       fontWeight: FontWeight.bold,
@@ -180,7 +180,7 @@ class _MainPage extends State<MainPage> with TickerProviderStateMixin{
                                 detail: detail,
                                 nftAddress: nftAddress,
                                 price: price,
-                                time: hour * 10000 + min * 100 + sec,
+                                time: (hour * 10000 + min * 100 + sec).toString(),
                               ),
                           )));
                     },

@@ -47,7 +47,7 @@ class _VoteInfo extends State<VoteInfo> {
             Container(
               width: widget.width * 0.5,
               child: Text(
-                widget.content,
+                widget.suggester,
                 style: TextStyle(fontSize: widget.height * 0.02),
               ),
             ),

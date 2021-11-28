@@ -1,5 +1,4 @@
 import 'package:fint/page/login/login_event.dart';
-import 'package:fint/page/login/login_page.dart';
 import 'package:fint/page/main/main_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

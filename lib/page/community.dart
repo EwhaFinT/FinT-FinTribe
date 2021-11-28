@@ -30,7 +30,7 @@ class _CommunityPage extends State<CommunityPage> {
                       Expanded(
                           child: ListView(
                               children: <Widget> [
-                                _buildMyinfo(width, height),
+                                _buildMyinfo(width, height, 'kimyu'),
                                 _Padding(width),
                                 Container(
                                   padding: EdgeInsets.all(width * 0.04),
@@ -100,7 +100,7 @@ class _CommunityPage extends State<CommunityPage> {
                       padding: EdgeInsets.all(width * 0.01),
                     ),
                     Text(
-                      'Artwork Name',
+                      'Blue Lemon',
                       style: TextStyle(
                           fontSize: height * 0.02,
                           fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class _CommunityPage extends State<CommunityPage> {
       ],
     );
   }
-  Widget _buildMyinfo(double width, double height){
+  Widget _buildMyinfo(double width, double height, String name){
     return Row(
         children: <Widget>[
 
@@ -142,7 +142,7 @@ class _CommunityPage extends State<CommunityPage> {
             padding: EdgeInsets.all(width * 0.01),
           ),
           Text(
-            '작성자 이름',
+            name,
             style: TextStyle(
               fontSize: height * 0.025,
             ),
@@ -164,7 +164,7 @@ class _CommunityPage extends State<CommunityPage> {
             textAlign: TextAlign.left,
           ),
           Text(
-          '김유정 작가가 최근 문화계에서 큰 업적을 쌓고 있습니다. 이에 따라 저희 유정이 작품도 더 값이 오를 것이라 믿습니다.',
+          'kelina 작가가 최근 문화계에서 큰 업적을 쌓고 있습니다. 이에 따라 kelina 작품도 더 값이 오를 것이라 믿습니다.',
             style: TextStyle(
             fontSize: height * 0.018,
             ),
@@ -204,8 +204,8 @@ class _CommunityPage extends State<CommunityPage> {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    '입찰 가격: ' '~~~' 'KLAY\n'
-                      '경매 일시: ' '~~~',
+                    '입찰 가격: ' '500' ' KLAY\n'
+                      '경매 일시: ' '2021-11-30',
                     style: TextStyle(
                         fontSize: height * 0.018,
                     ),
@@ -221,11 +221,11 @@ class _CommunityPage extends State<CommunityPage> {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                        '작품명: ' '~~~\n'
-                        '작가: ' '~~~\n'
-                        '낙찰 가격: ' '~~~' 'KLAY\n'
+                        '작품명: ' 'Blue Lemon\n'
+                        '작가: ' 'kelina\n'
+                        '낙찰 가격: ' '3000' ' KLAY\n'
                             '낙찰 일시: \n'
-                            '2021-11-04 13:01' 'KST\n',
+                            '2021-11-29 13:01' 'KST\n',
                     style: TextStyle(
                       fontSize: height * 0.018,
                     ),
@@ -256,7 +256,7 @@ class _CommunityPage extends State<CommunityPage> {
           Padding(
             padding: EdgeInsets.all(width * 0.01),
           ),
-          _buildMyinfo(width, height),
+          _buildMyinfo(width, height, 'Ahn'),
         ]
     );
   }
@@ -269,8 +269,8 @@ class _CommunityPage extends State<CommunityPage> {
         color: const Color(0xffededed),
       ),
       child: Text(
-        '반대합니다. 제가 유정이 작가 최측근인데 요즘 작품 스타일이 그 전과는 달라서'
-            '어쩌구 저쩌구 얄리얄리얄라숑 얄라리 얄라 고흐 친구 고갱님',
+        '반대합니다. 제가 kelina 작가 최측근인데 요즘 작품 스타일이 그 전과는 달라서 '
+            '대중들의 호불호가 많이 갈릴 것으로 예상됩니다.',
         style: TextStyle(
           fontSize: height * 0.018,
         ),
