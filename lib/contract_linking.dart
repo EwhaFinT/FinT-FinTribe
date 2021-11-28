@@ -82,15 +82,5 @@ class ContractLinking extends ChangeNotifier {
   //   notifyListeners();
   // }
 
-  setName(String nameToSet) async {
 
-    // Setting the name to nameToSet(name defined by user)
-    isLoading = true;
-    notifyListeners();
-    await _client.sendTransaction(
-        _credentials,
-        Transaction.callContract(
-            contract: _contract, function: _setName, parameters: [nameToSet]));
-    getName();
-  }
 }
