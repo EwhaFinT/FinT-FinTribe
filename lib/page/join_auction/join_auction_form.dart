@@ -10,10 +10,11 @@ import '../../page/auction/auction_page.dart';
 class AuctionForm extends StatefulWidget {
   double width;
   double height;
+  int priceId;
   int total;
   double remainRatio;
 
-  AuctionForm({required this.width, required this.height, required this.total, required this.remainRatio});
+  AuctionForm({required this.width, required this.height, required this.priceId, required this.total, required this.remainRatio});
   _AuctionForm createState() => _AuctionForm();
 }
 
@@ -36,7 +37,6 @@ class _AuctionForm extends State<AuctionForm> {
       userId = prefs.getInt('userId') as int;
     });
   }
-
 
   String _price = '0';
   setPrice(int total, String ratio) => setState(() {
@@ -98,7 +98,7 @@ class _AuctionForm extends State<AuctionForm> {
               onPressed: () async {
                 if(formKey.currentState!.validate()) {
                   SendToServer().joinAuction(
-                      1, userId, 1, double.parse(_ratio.text) / 100);
+                      widget.priceId, userId, 1, double.parse(_ratio.text) / 100);
                   showDialog<void>(
                     context: context,
                     builder: (BuildContext context) {
@@ -113,7 +113,7 @@ class _AuctionForm extends State<AuctionForm> {
                           child: ListBody(
                             children: <Widget>[
                               Text(
-                                '경매 참여 완료! ${double.parse(_ratio.text) / 100 * widget.total} KLAY 인출 되었습니다.\n경매 현황: ${(1-(widget.remainRatio - double.parse(_ratio.text) / 100)) * widget.total} KLAY / ${widget.total} KLAY',
+                                '경매 참여 완료! ${(double.parse(_ratio.text) / 100 * widget.total).round()} KLAY 인출 되었습니다.\n경매 현황: ${((1-(widget.remainRatio - double.parse(_ratio.text) / 100)) * widget.total).round()} KLAY / ${widget.total} KLAY',
                                 style: TextStyle(
                                   fontSize: widget.height * 0.018,
                                 ),
@@ -125,17 +125,16 @@ class _AuctionForm extends State<AuctionForm> {
                           TextButton(
                             child: const Text('Ok'),
                             onPressed: () {
-                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AuctionPage()),
+                              );
                             },
                           ),
                         ],
                       );
                     },
-                  );
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AuctionPage()),
                   );
                 }
               },

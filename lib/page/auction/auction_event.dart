@@ -77,7 +77,7 @@ class ReceiveFromServer {
         'Content-Type': 'application/json',
       },
     );
-    print(response.body);
+    //print(response.body);
     if(response.statusCode == 200)
       return AuctionInitialize.fromJson(json.decode(response.body));
     throw Exception();

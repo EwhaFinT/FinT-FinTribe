@@ -42,7 +42,7 @@ class _JoinAuctionPage extends State<JoinAuctionPage> {
                 Padding(
                   padding: EdgeInsets.all(width * 0.02),
                 ),
-                AuctionForm(width: width, height: height, total: widget.price.totalPrice, remainRatio: widget.price.remainRatio),
+                AuctionForm(width: width, height: height, priceId: widget.price.priceId, total: widget.price.totalPrice, remainRatio: widget.price.remainRatio),
               ],
             ),
           ),

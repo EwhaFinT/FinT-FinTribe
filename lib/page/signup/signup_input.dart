@@ -21,7 +21,7 @@ class _SignupTextField extends State<SignupTextField> {
     return Row(
       children: <Widget> [
         Container( // 라벨
-          width: widget.width * 0.18,
+          width: widget.width * 0.2,
           child: Text(
             widget.label,
             style: TextStyle(

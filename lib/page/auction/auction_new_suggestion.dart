@@ -41,10 +41,6 @@ class _NewSuggestion extends State<NewSuggestion> {
   });
 
   Widget build(BuildContext context) {
-    /*
-    _total.text = '0';
-    _ratio.text = '0';
-    */
     return Container(
       padding: EdgeInsets.all(widget.width * 0.04),
       decoration: const BoxDecoration(
@@ -107,7 +103,7 @@ class _NewSuggestion extends State<NewSuggestion> {
                           child: ListBody(
                             children: <Widget>[
                               Text(
-                                '경매 현황: ${_price} KLAY / ${_total.text} KLAY',
+                                '경매 현황: ${double.parse(_price).round()} KLAY / ${_total.text} KLAY',
                                 style: TextStyle(
                                   fontSize: widget.height * 0.018,
                                 ),
@@ -119,17 +115,16 @@ class _NewSuggestion extends State<NewSuggestion> {
                           TextButton(
                             child: const Text('Ok'),
                             onPressed: () {
-                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AuctionPage()),
+                              );
                             },
                           ),
                         ],
                       );
                     },
-                  );
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => AuctionPage()),
                   );
                 }
               },

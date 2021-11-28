@@ -17,7 +17,7 @@ class _LoginTextField extends State<LoginTextField> {
     return Row(
         children: <Widget> [
           Container(
-            width: widget.width * 0.18,
+            width: widget.width * 0.2,
             child: Text(
               widget.label,
               style: TextStyle(
