@@ -44,7 +44,6 @@ class _ArtworkPage extends State<ArtworkPage> {
                           Padding(
                             padding: EdgeInsets.all(width * 0.03),
                           ),
-                          _buildTimer(width, height),
                           Padding(
                             padding: EdgeInsets.all(width * 0.03),
                           ),

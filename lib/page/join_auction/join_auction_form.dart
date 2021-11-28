@@ -132,12 +132,12 @@ class _AuctionForm extends State<AuctionForm> {
                       );
                     },
                   );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AuctionPage()),
+                  );
                 }
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => AuctionPage()),
-                );
               },
               style: TextButton.styleFrom(
                 primary: Colors.black,

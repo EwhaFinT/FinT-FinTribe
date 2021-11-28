@@ -105,47 +105,67 @@ class _MyDrawer extends StatelessWidget {
             leading: Icon(Icons.insert_photo_rounded),
             title: Text('Artwork'),
             onTap: () async {
-              Artwork artwork = await ReceiveFromServer().loadArtworkInfo();
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => ArtworkPage(
-                      artworkInfo: artwork,
-                    )),
-              );
+              final prefs = await SharedPreferences.getInstance();
+              final userId = prefs.getInt('userId') ?? 0;
+
+              if(userId != 0) {
+                Artwork artwork = await ReceiveFromServer().loadArtworkInfo();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ArtworkPage(
+                        artworkInfo: artwork,
+                      )),
+                );
+              }
             },
           ),
           ListTile(
             leading: Icon(Icons.file_upload_rounded),
             title: Text('Upload'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => UploadPage()),
-              );
+            onTap: () async {
+              final prefs = await SharedPreferences.getInstance();
+              final userId = prefs.getInt('userId') ?? 0;
+
+              if(userId != 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => UploadPage()),
+                );
+              }
             },
           ),
           ListTile(
             leading: Icon(Icons.insert_comment_rounded),
             title: Text('Community'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => CommunityPage()),
-              );
+            onTap: () async {
+              final prefs = await SharedPreferences.getInstance();
+              final userId = prefs.getInt('userId') ?? 0;
+
+              if(userId != 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CommunityPage()),
+                );
+              }
             },
           ),
           ListTile(
             leading: Icon(Icons.add_shopping_cart),
             title: Text('Auction'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => AuctionPage()),
-              );
+            onTap: () async {
+              final prefs = await SharedPreferences.getInstance();
+              final userId = prefs.getInt('userId') ?? 0;
+
+              if(userId != 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AuctionPage()),
+                );
+              }
             },
           ),
         ],
