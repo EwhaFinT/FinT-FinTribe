@@ -35,12 +35,13 @@
 frontend : Flutter, Dart
 backend : SpringBoot, Gradle, Java
 database : MySQL
+ui design : Figma
 blockchain : Klaytn, Solidity
 api documentation/test : postman
 ```
 | frontend | backend | etc |                                                                                                                                                   
 |------|------|------|
-| <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"> <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"> <br /> <img src="https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white"> | <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot"> <img src ="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <br /> <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white"> <br /> <img src ="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"> | <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"> <img src ="https://img.shields.io/badge/Solidity-e6e6e6?style=for-the-badge&logo=solidity&logoColor=black"> |
+| <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"> <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"> <br /> <img src="https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white"> | <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot"> <img src ="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white"> <br /> <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/IntelliJIDEA-000000.svg?style=for-the-badge&logo=intellij-idea&logoColor=white"> <br /> <img src ="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"> | <img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white"> <img src ="https://img.shields.io/badge/Solidity-e6e6e6?style=for-the-badge&logo=solidity&logoColor=black"> <br /> <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">|
 
 ###### FinTribe 서버 상세 페이지 : https://github.com/EwhaFinT/FinT-Server-springboot#readme <br />
 
@@ -50,10 +51,10 @@ api documentation/test : postman
 
 | profile | name | role | github |
 | --- | --- | --- | --- | 
-| <img src="https://user-images.githubusercontent.com/70785620/148648365-b8f5a279-2000-4259-aed6-0218eeb59b3d.png" width="100px"> | 김유정 | frontend | https://github.com/kimyu0218 |
-| <img src="https://user-images.githubusercontent.com/70785620/148648367-32d19420-a0b3-401d-8cae-d961299dc0fb.png" width="100px"> | 김지인 | backend | https://github.com/kji-dec |
-| <img src="https://user-images.githubusercontent.com/70785620/148648371-ac822b50-b186-4cff-9dcd-00b7e8f50a1b.png" width="100px"> | 김채연 | frontend, blockchain | https://github.com/chaeyeon-kelina |
-| <img src="https://user-images.githubusercontent.com/70785620/148648372-d15ec7c1-4d51-4487-98af-32792ee9afad.png" width="100px"> | 안혜진 | backend, blockchain | https://github.com/geniee44 |
+| <img src="https://user-images.githubusercontent.com/70785620/148648365-b8f5a279-2000-4259-aed6-0218eeb59b3d.png" width="100px"> | 김유정 | frontend, ui design | https://github.com/kimyu0218 |
+| <img src="https://user-images.githubusercontent.com/70785620/148648367-32d19420-a0b3-401d-8cae-d961299dc0fb.png" width="100px"> | 김지인 | backend, ui design | https://github.com/kji-dec |
+| <img src="https://user-images.githubusercontent.com/70785620/148648371-ac822b50-b186-4cff-9dcd-00b7e8f50a1b.png" width="100px"> | 김채연 | frontend, ui design, blockchain | https://github.com/chaeyeon-kelina |
+| <img src="https://user-images.githubusercontent.com/70785620/148648372-d15ec7c1-4d51-4487-98af-32792ee9afad.png" width="100px"> | 안혜진 | backend, ui design, blockchain | https://github.com/geniee44 |
 
 </br>
 
