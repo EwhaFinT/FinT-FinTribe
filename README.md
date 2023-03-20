@@ -53,7 +53,7 @@ api documentation/test : postman
 | --- | --- | --- | --- | 
 | <img src="https://user-images.githubusercontent.com/70785620/148648365-b8f5a279-2000-4259-aed6-0218eeb59b3d.png" width="100px"> | 김유정 | frontend, ui design | https://github.com/kimyu0218 |
 | <img src="https://user-images.githubusercontent.com/70785620/148648367-32d19420-a0b3-401d-8cae-d961299dc0fb.png" width="100px"> | 김지인 | backend, ui design | https://github.com/kji-dec |
-| <img src="https://user-images.githubusercontent.com/70785620/148648371-ac822b50-b186-4cff-9dcd-00b7e8f50a1b.png" width="100px"> | 김채연 | frontend, ui design, blockchain | https://github.com/chaeyeon-kelina |
+| <img src="https://user-images.githubusercontent.com/70785620/148648371-ac822b50-b186-4cff-9dcd-00b7e8f50a1b.png" width="100px"> | 김채연 | frontend, ui design, blockchain | https://github.com/chaeyeonS2 |
 | <img src="https://user-images.githubusercontent.com/70785620/148648372-d15ec7c1-4d51-4487-98af-32792ee9afad.png" width="100px"> | 안혜진 | backend, ui design, blockchain | https://github.com/geniee44 |
 
 </br>
